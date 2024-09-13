@@ -9,8 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d246ccab-a9b6-4776-8d44-3bb2910115c2" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="d246ccab-a9b6-4776-8d44-3bb2910115c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TwitchClipViewer.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TwitchClipViewer.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/Config/twitchconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/Config/twitchconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/TwitchClipViewer.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/TwitchClipViewer.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/TwitchClipViewer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/TwitchClipViewer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/TwitchClipViewer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/TwitchClipViewer.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726247904430</updated>
       <workItem from="1726247909110" duration="413000" />
-      <workItem from="1726248345739" duration="626000" />
+      <workItem from="1726248345739" duration="1016000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />

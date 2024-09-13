@@ -24,6 +24,6 @@ hs_err_pid*
 replay_pid*
 
 # IntelliJ IDEA files
-.idea/misc.xml
+.idea
 out/
 /Config/twitchconfig.json
