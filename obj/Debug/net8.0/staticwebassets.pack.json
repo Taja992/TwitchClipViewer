@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\scripts.js",
+      "PackagePath": "staticwebassets\\scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TwitchClipViewer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TwitchClipViewer.props",
+      "PackagePath": "build\\TwitchClipViewer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TwitchClipViewer.props",
+      "PackagePath": "buildMultiTargeting\\TwitchClipViewer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TwitchClipViewer.props",
+      "PackagePath": "buildTransitive\\TwitchClipViewer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

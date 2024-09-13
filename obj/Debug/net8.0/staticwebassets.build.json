@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "Wty4uGqJ6WzfPqT7EF171Vhii1jF7AgNXLISCYdb2Aw=",
+  "Source": "TwitchClipViewer",
+  "BasePath": "_content/TwitchClipViewer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TwitchClipViewer\\wwwroot",
+      "Source": "TwitchClipViewer",
+      "ContentRoot": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\",
+      "BasePath": "_content/TwitchClipViewer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\index.html",
+      "SourceId": "TwitchClipViewer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\",
+      "BasePath": "_content/TwitchClipViewer",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\scripts.js",
+      "SourceId": "TwitchClipViewer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\",
+      "BasePath": "_content/TwitchClipViewer",
+      "RelativePath": "scripts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\scripts.js"
+    },
+    {
+      "Identity": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\styles.css",
+      "SourceId": "TwitchClipViewer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\wwwroot\\",
+      "BasePath": "_content/TwitchClipViewer",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\styles.css"
+    }
+  ]
+}

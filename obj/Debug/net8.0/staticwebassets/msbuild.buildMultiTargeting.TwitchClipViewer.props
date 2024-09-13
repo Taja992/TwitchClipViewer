@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TwitchClipViewer.props" />
+</Project>
