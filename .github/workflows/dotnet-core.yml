@@ -28,4 +28,4 @@ jobs:
         run: dotnet build TwitchClipPlayer/TwitchClipPlayer.csproj --no-restore --configuration Release
 
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal --configuration Release
+        run: dotnet test TwitchClipPlayerTests/TwitchClipPlayerTests.csproj --no-build --verbosity normal --configuration Release
