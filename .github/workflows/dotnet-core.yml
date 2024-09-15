@@ -1,4 +1,4 @@
-﻿name: .NET Core
+name: .NET Core
 
 on:
   push:
@@ -21,11 +21,17 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore dependencies
+      - name: Restore dependencies for main project
         run: dotnet restore TwitchClipPlayer/TwitchClipPlayer.csproj
 
-      - name: Build
+      - name: Restore dependencies for test project
+        run: dotnet restore TwitchClipPlayerTests/TwitchClipPlayerTests.csproj
+
+      - name: Build main project
         run: dotnet build TwitchClipPlayer/TwitchClipPlayer.csproj --no-restore --configuration Release
+
+      - name: Build test project
+        run: dotnet build TwitchClipPlayerTests/TwitchClipPlayerTests.csproj --no-restore --configuration Release
 
       - name: Run tests
         run: dotnet test TwitchClipPlayerTests/TwitchClipPlayerTests.csproj --no-build --verbosity normal --configuration Release
