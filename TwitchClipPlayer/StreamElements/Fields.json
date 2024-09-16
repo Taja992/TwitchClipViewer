@@ -1,0 +1,12 @@
+﻿{
+  "startDate": {
+    "type": "date",
+    "label": "Start Date",
+    "value": "2023-01-01"
+  },
+  "endDate": {
+    "type": "date",
+    "label": "End Date",
+    "value": "2023-12-31"
+  }
+}

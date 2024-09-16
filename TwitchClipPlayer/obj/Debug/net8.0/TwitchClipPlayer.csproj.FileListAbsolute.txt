@@ -67,3 +67,4 @@ C:\Users\Brandon\Desktop\School\Twitch Clip Viewer 3.0\TwitchClipViewer\TwitchCl
 C:\Users\Brandon\Desktop\School\Twitch Clip Viewer 3.0\TwitchClipViewer\TwitchClipPlayer\obj\Debug\net8.0\TwitchClipPlayer.pdb
 C:\Users\Brandon\Desktop\School\Twitch Clip Viewer 3.0\TwitchClipViewer\TwitchClipPlayer\obj\Debug\net8.0\TwitchClipPlayer.genruntimeconfig.cache
 C:\Users\Brandon\Desktop\School\Twitch Clip Viewer 3.0\TwitchClipViewer\TwitchClipPlayer\obj\Debug\net8.0\ref\TwitchClipPlayer.dll
+C:\Users\Brandon\Desktop\School\Twitch Clip Viewer 3.0\TwitchClipViewer\twitchclipplayer\bin\Debug\net8.0\StreamElements\front.json
