@@ -153,7 +153,13 @@ public class TwitchClipPlayerTests
         {
             new Clip() { Id = "clip1" },
             new Clip() { Id = "clip2" },
-            new Clip() { Id = "Clip3" }
+            new Clip() { Id = "clip3" },
+            new Clip() { Id = "clip4" },
+            new Clip() { Id = "clip5" },
+            new Clip() { Id = "clip6" },
+            new Clip() { Id = "clip7" },
+            new Clip() { Id = "clip8" },
+            new Clip() { Id = "clip9" }
         };
         
         // Act
