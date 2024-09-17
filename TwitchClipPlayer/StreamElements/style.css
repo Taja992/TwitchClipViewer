@@ -1,4 +1,10 @@
-﻿.main-container {
+﻿* {
+    font-family: '{fontName}', sans-serif;
+    font-weight: {fontWeight};
+    letter-spacing:0.8px;
+}
+
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,5 +20,18 @@
 
 #debug-messages {
     margin-top: 10px;
+    padding: 10px;
+    color: #29AB87; /* Jungle Green text color */
+    background-color: #3B2F2F; /* Jungle Brown background */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    text-align: center; /* Centered text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    max-width: 80%; /* Max width to prevent overflow */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+#clip-counter {
     color: red;
 }

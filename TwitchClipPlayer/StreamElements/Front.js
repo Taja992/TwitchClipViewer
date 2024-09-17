@@ -14,6 +14,17 @@ window.addEventListener('onWidgetLoad', function (obj) {
             console.log('Date changed:', input.name, input.value);
             fieldData[input.name] = input.value;
             playClips();
+
+            const debugMessages = document.getElementById('debug-messages');
+            debugMessages.textContent = fieldData.titleText;
+            debugMessages.style.color = fieldData.titleColor;
+            debugMessages.style.fontSize = `${fieldData.titleSize}px`;
+            debugMessages.style.fontFamily = fieldData.fontName;
+            debugMessages.style.fontWeight = fieldData.fontWeight;
+
+            // Update the Google Font link
+            const googleFontLink = document.getElementById('google-font-link');
+            googleFontLink.href = `https://fonts.googleapis.com/css?family=${fieldData.fontName}:400,${fieldData.fontWeight}`;
         });
     });
 });
@@ -25,7 +36,7 @@ async function fetchClips(startDate, endDate) {
         const formattedStartDate = new Date(startDate).toISOString();
         const formattedEndDate = new Date(endDate).toISOString();
 
-        const response = await fetch(`http://localhost:5069/clips?start_date=${formattedStartDate}&end_date=${formattedEndDate}`);
+        const response = await fetch(`https://twitchclipplayer-h3bcanc6bmdkawhz.northeurope-01.azurewebsites.net/clips?start_date=${formattedStartDate}&end_date=${formattedEndDate}`);
         if (!response.ok) {
             const errorText = await response.text();
             throw new Error(`Failed to fetch clips: ${response.statusText} - ${errorText}`);
@@ -67,6 +78,7 @@ async function playClips() {
         }
 
         currentClipIndex = 0; // Reset the clip index
+        // updateClipCounter(`Clips remaining: ${clips.length}`);
 
         function playNextClip() {
             if (currentClipIndex >= clips.length) {
@@ -75,6 +87,7 @@ async function playClips() {
                 const { randomStartDate, randomEndDate } = generateRandomDateRange();
                 fetchClips(randomStartDate, randomEndDate).then(newClips => {
                     clips = newClips;
+                    // updateClipCounter(`Clips remaining: ${clips.length}`);
                     playNextClip();
                 });
                 return;
@@ -85,6 +98,7 @@ async function playClips() {
             clipPlayer.src = clip.thumbnail_url.replace('-preview-480x272.jpg', '.mp4');
             clipPlayer.play();
             currentClipIndex++;
+            // updateClipCounter(`Clips remaining: ${clips.length - currentClipIndex}`);
         }
 
         clipPlayer.removeEventListener('ended', playNextClip); // Remove any existing event listener
@@ -96,7 +110,7 @@ async function playClips() {
 }
 
 function generateRandomDateRange() {
-    const start = new Date(2020, 0, 1); // Start date (e.g., January 1, 2020)
+    const start = new Date(2022, 3, 11); // Start date
     const end = new Date(); // End date (current date)
     const randomStartDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     const randomEndDate = new Date(randomStartDate.getTime() + Math.random() * (end.getTime() - randomStartDate.getTime()));
@@ -110,4 +124,15 @@ function updateDebugMessages(message) {
     console.log(message);
     const debugMessages = document.getElementById('debug-messages');
     debugMessages.innerText = message;
+    // Apply the text settings to the debug-messages div
+    debugMessages.style.color = fieldData.titleColor;
+    debugMessages.style.fontSize = `${fieldData.titleSize}px`;
+    debugMessages.style.fontFamily = fieldData.fontName;
+    debugMessages.style.fontWeight = fieldData.fontWeight;
 }
+
+// function updateClipCounter(message) {
+//     console.log(message);
+//     const clipCounter = document.getElementById('clip-counter');
+//     clipCounter.innerText = message;
+// }

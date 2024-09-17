@@ -2,11 +2,51 @@
   "startDate": {
     "type": "date",
     "label": "Start Date",
-    "value": "2023-01-01"
+    "value": "2023-01-01",
+    "group": "Date Range"
   },
   "endDate": {
     "type": "date",
     "label": "End Date",
-    "value": "2023-12-31"
+    "value": "2023-12-31",
+    "group": "Date Range"
+  },
+  "titleText": {
+    "type": "text",
+    "label": "Title text",
+    "value": "Follower goal",
+    "group": "Text Settings"
+  },
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Nunito",
+    "group": "Text Settings"
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "900",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group": "Text Settings"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title font color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Text Settings"
+  },
+  "titleSize": {
+    "type": "number",
+    "label": "Title font Size",
+    "value": 24,
+    "group": "Text Settings"
   }
 }

@@ -24,6 +24,5 @@ namespace TwitchClipPlayer.Controllers;
                 return StatusCode(500, ex.Message);
             }
         }
-
-
+        
     }

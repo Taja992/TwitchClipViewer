@@ -1,0 +1,14 @@
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\TwitchClipPlayer.exe
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\appsettings.Development.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\appsettings.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Config\twitchconfig.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\StreamElements\Fields.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\TwitchClipPlayer.dll
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\TwitchClipPlayer.deps.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\TwitchClipPlayer.runtimeconfig.json
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\TwitchClipPlayer.pdb
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Microsoft.OpenApi.dll
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Brandon\AppData\Local\Temp\rider-publish11782354918904369889\Swashbuckle.AspNetCore.SwaggerUI.dll
