@@ -25,3 +25,7 @@ dist-ssr
 
 # Ignore twitchconfig.json
 TwitchClipPlayer/Config/twitchconfig.json
+
+# Ignore bin directories
+/TwitchClipPlayer/bin/
+/TwitchClipPlayerTests/bin/
