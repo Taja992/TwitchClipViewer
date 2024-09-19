@@ -5,6 +5,7 @@ using Moq;
 using Moq.Protected;
 using System.Net;
 using System.Net.Http.Json;
+using Microsoft.Extensions.Logging;
 
 
 namespace TwitchClipPlayerTests;
@@ -18,6 +19,7 @@ public class TwitchClipPlayerTests
 
     public TwitchClipPlayerTests()
     {
+        var loggerMock = new Mock<ILogger<TwitchService>>();
         var httpClientFactoryMock = new Mock<IHttpClientFactory>();
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
         var config = new TwitchConfig
@@ -28,7 +30,7 @@ public class TwitchClipPlayerTests
         };
         var httpClient = new HttpClient(_httpMessageHandlerMock.Object);
         httpClientFactoryMock.Setup(factory => factory.CreateClient(It.IsAny<string>())).Returns(httpClient);
-        _twitchService = new TwitchService(httpClientFactoryMock.Object, config);
+        _twitchService = new TwitchService(httpClientFactoryMock.Object, config, loggerMock.Object);
     }
 
     [Fact]

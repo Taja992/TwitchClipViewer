@@ -20,12 +20,19 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?
 
 # Ignore twitchconfig.json
 TwitchClipPlayer/Config/twitchconfig.json
 
+# Ignore appsettings.json and its environment-specific variants
+appsettings.json
+appsettings.*.json
+
 # Ignore bin directories
 /TwitchClipPlayer/bin/
 /TwitchClipPlayerTests/bin/
+
+# Ignore obj directories
+/TwitchClipPlayer/obj/
+/TwitchClipPlayerTests/obj/

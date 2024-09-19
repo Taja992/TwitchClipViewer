@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TwitchClipPlayerTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8d88fbe96b0be5843cf02d6092d2dae09e0c50e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a90c34756946363d0214ea2cc793f3068cd5737c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TwitchClipPlayerTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TwitchClipPlayerTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
