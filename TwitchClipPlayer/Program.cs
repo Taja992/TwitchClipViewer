@@ -24,9 +24,9 @@ builder.Services.AddSwaggerGen();
 // Add CORS policy
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddDefaultPolicy(b =>
     {
-        builder.AllowAnyOrigin()
+        b.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
@@ -34,10 +34,15 @@ builder.Services.AddCors(options =>
 
 // Register the Twitch service
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<ITwitchService, TwitchService>();
+//builder.Services.AddScoped<ITwitchService, TwitchService>();
+builder.Services.AddSingleton<ITwitchService, TwitchService>();
 
 // Add controllers
 builder.Services.AddControllers();
+
+// Configure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 var app = builder.Build();
 

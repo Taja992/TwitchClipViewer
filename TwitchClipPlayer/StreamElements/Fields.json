@@ -48,5 +48,17 @@
     "label": "Title font Size",
     "value": 24,
     "group": "Text Settings"
+  },
+  "backgroundColor":{
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgb(0, 0, 0)",
+    "group": "Text Settings"
+  },
+  "showDebugMessages": {
+    "type": "checkbox",
+    "label": "Show Playing Clip/Debug Messages",
+    "value": true,
+    "group": "Text Settings"
   }
 }

@@ -14,44 +14,73 @@ public interface ITwitchService
     Task<List<Clip>> FetchClips(DateTime startDate, DateTime endDate);
 }
 
-public class TwitchService(IHttpClientFactory httpClientFactory, TwitchConfig config) : ITwitchService
+public class TwitchService : ITwitchService
 {
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-    private readonly string _clientId = config.ClientId ?? throw new ArgumentNullException(nameof(config.ClientId));
-    private readonly string _clientSecret = config.ClientSecret ?? throw new ArgumentNullException(nameof(config.ClientSecret));
-    private readonly string _broadcasterId = config.BroadcasterId ?? throw new ArgumentNullException(nameof(config.BroadcasterId));
+    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly string _clientId;
+    private readonly string _clientSecret;
+    private readonly string _broadcasterId;
+    private readonly ILogger<TwitchService> _logger;
+    private string _accessToken = string.Empty;
+    private DateTime _accessTokenExpiry;
 
-    // Method to get access token from Twitch API
-    public async Task<string> GetAccessToken()
+    public TwitchService(IHttpClientFactory httpClientFactory, TwitchConfig config, ILogger<TwitchService> logger)
     {
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.PostAsync("https://id.twitch.tv/oauth2/token", new FormUrlEncodedContent(new[]
-        {
-            new KeyValuePair<string, string>("client_id", _clientId),
-            new KeyValuePair<string, string>("client_secret", _clientSecret),
-            new KeyValuePair<string, string>("grant_type", "client_credentials")
-        }));
-
-        if (!response.IsSuccessStatusCode)
-        {
-            var errorText = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Error fetching access token: {response.StatusCode} - {errorText}");
-            throw new Exception($"Error fetching access token: {response.StatusCode} - {errorText}");
-        }
-
-        var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
-
-        if (tokenResponse == null || string.IsNullOrEmpty(tokenResponse.AccessToken))
-        {
-            Console.WriteLine("Failed to retrieve access token.");
-            throw new Exception("Failed to retrieve access token.");
-        }
-
-        // Log the access token for debugging purposes
-        Console.WriteLine($"Access Token: {tokenResponse.AccessToken}");
-
-        return tokenResponse.AccessToken;
+        _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        _clientId = config.ClientId ?? throw new ArgumentNullException(nameof(config.ClientId));
+        _clientSecret = config.ClientSecret ?? throw new ArgumentNullException(nameof(config.ClientSecret));
+        _broadcasterId = config.BroadcasterId ?? throw new ArgumentNullException(nameof(config.BroadcasterId));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+    
+// Method to get access token from Twitch API
+public async Task<string> GetAccessToken()
+{
+    // Log the current state of the token and its expiry time
+    _logger.LogInformation("Current Access Token: {AccessToken}", _accessToken);
+    _logger.LogInformation("Current Access Token Expiry: {ExpiryTime}", _accessTokenExpiry.ToString("yyyy-MM-dd HH:mm:ss"));
+
+    if (!string.IsNullOrEmpty(_accessToken) && _accessTokenExpiry > DateTime.UtcNow)
+    {
+        _logger.LogInformation("Using cached access token.");
+        return _accessToken;
+    }
+
+    _logger.LogInformation("Fetching new access token.");
+    var client = _httpClientFactory.CreateClient();
+    var response = await client.PostAsync("https://id.twitch.tv/oauth2/token", new FormUrlEncodedContent(new[]
+    {
+        new KeyValuePair<string, string>("client_id", _clientId),
+        new KeyValuePair<string, string>("client_secret", _clientSecret),
+        new KeyValuePair<string, string>("grant_type", "client_credentials")
+    }));
+
+    if (!response.IsSuccessStatusCode)
+    {
+        var errorText = await response.Content.ReadAsStringAsync();
+        _logger.LogError("Error fetching access token: {StatusCode} - {ErrorText}", response.StatusCode, errorText);
+        throw new Exception($"Error fetching access token: {response.StatusCode} - {errorText}");
+    }
+
+    var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+
+    if (tokenResponse == null || string.IsNullOrEmpty(tokenResponse.AccessToken))
+    {
+        _logger.LogError("Failed to retrieve access token.");
+        throw new Exception("Failed to retrieve access token.");
+    }
+
+    // Log the access token for debugging purposes
+    _logger.LogInformation("New Access Token: {AccessToken}", tokenResponse.AccessToken);
+
+    _accessToken = tokenResponse.AccessToken;
+    _accessTokenExpiry = DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn ?? 0);
+
+    // Log the new expiration time in a human-readable format
+    _logger.LogInformation("New Access Token Expiry: {ExpiryTime}", _accessTokenExpiry.ToString("yyyy-MM-dd HH:mm:ss"));
+
+    return _accessToken;
+}
 
     // Method to fetch clips from Twitch API
     public async Task<List<Clip>> FetchClips(DateTime startDate, DateTime endDate)
@@ -67,7 +96,7 @@ public class TwitchService(IHttpClientFactory httpClientFactory, TwitchConfig co
         if (!response.IsSuccessStatusCode)
         {
             var errorText = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Error fetching clips: {response.StatusCode} - {errorText}");
+            _logger.LogError("Error fetching clips: {StatusCode} - {errorText}", response.StatusCode, errorText);
             throw new Exception($"Error fetching clips: {response.StatusCode} - {errorText}");
         }
 
@@ -100,7 +129,7 @@ public class TwitchService(IHttpClientFactory httpClientFactory, TwitchConfig co
     {
         if (clipsResponse?.Data == null)
         {
-            Console.WriteLine("No clips data found.");
+            _logger.LogInformation("No clips data found.");
             return new List<Clip>();
         }
 

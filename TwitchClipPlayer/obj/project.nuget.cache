@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O98aPxCM6Lc=",
+  "dgSpecHash": "28EkhjNFKuU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\TwitchClipPlayer\\TwitchClipPlayer.csproj",
+  "projectFilePath": "C:\\Users\\Brandon\\Desktop\\School\\Twitch Clip Viewer 3.0\\TwitchClipViewer\\twitchclipplayer\\TwitchClipPlayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brandon\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.8\\microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "C:\\Users\\Brandon\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

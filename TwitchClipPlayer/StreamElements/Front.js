@@ -27,6 +27,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
             googleFontLink.href = `https://fonts.googleapis.com/css?family=${fieldData.fontName}:400,${fieldData.fontWeight}`;
         });
     });
+    // Set initial visibility of debug messages based on the checkbox value
+    const debugMessages = document.getElementById('debug-messages');
+    debugMessages.style.display = fieldData.showDebugMessages ? 'block' : 'none';
 });
 
 async function fetchClips(startDate, endDate) {
@@ -129,6 +132,8 @@ function updateDebugMessages(message) {
     debugMessages.style.fontSize = `${fieldData.titleSize}px`;
     debugMessages.style.fontFamily = fieldData.fontName;
     debugMessages.style.fontWeight = fieldData.fontWeight;
+    debugMessages.style.backgroundColor = fieldData.backgroundColor;
+    debugMessages.style.display = fieldData.showDebugMessages ? 'block' : 'none';
 }
 
 // function updateClipCounter(message) {
