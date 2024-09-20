@@ -11,6 +11,16 @@ var twitchConfig = new TwitchConfig
     ClientSecret = Environment.GetEnvironmentVariable("TWITCH_CLIENT_SECRET")
 };
 
+// // Load configuration from the JSON file
+// var configuration = new ConfigurationBuilder()
+//     .SetBasePath(Directory.GetCurrentDirectory())
+//     .AddJsonFile("config/twitchconfig.json", optional: false, reloadOnChange: true)
+//     .Build();
+//
+// // Bind the configuration to the TwitchConfig class
+// var twitchConfig = new TwitchConfig();
+// configuration.Bind(twitchConfig);
+
 // Register TwitchConfig with the DI container
 builder.Services.AddSingleton(twitchConfig);
 
