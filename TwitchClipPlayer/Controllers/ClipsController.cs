@@ -15,12 +15,12 @@ namespace TwitchClipPlayer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetClips([FromQuery] DateTime start_date, [FromQuery] DateTime end_date, [FromQuery] string broadcaster_name)
+        public async Task<IActionResult> GetClips([FromQuery] DateTime startDate, [FromQuery] DateTime endDate, [FromQuery] string broadcasterName)
         {
             try
             {
-                var broadcasterId = await _twitchService.GetChannelIdByName(broadcaster_name);
-                var clips = await _twitchService.FetchClips(start_date, end_date, broadcasterId);
+                var broadcasterId = await _twitchService.GetChannelIdByName(broadcasterName);
+                var clips = await _twitchService.FetchClips(startDate, endDate, broadcasterId);
                 return Ok(clips);
             }
             catch (Exception ex)

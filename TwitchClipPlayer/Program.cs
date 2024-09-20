@@ -4,15 +4,12 @@ using TwitchClipPlayer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load configuration from the JSON file
-var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("config/twitchconfig.json", optional: false, reloadOnChange: true)
-    .Build();
-
-// Bind the configuration to the TwitchConfig class
-var twitchConfig = new TwitchConfig();
-configuration.Bind(twitchConfig);
+// Load configuration from environment variables
+var twitchConfig = new TwitchConfig
+{
+    ClientId = Environment.GetEnvironmentVariable("TWITCH_CLIENT_ID"),
+    ClientSecret = Environment.GetEnvironmentVariable("TWITCH_CLIENT_SECRET")
+};
 
 // Register TwitchConfig with the DI container
 builder.Services.AddSingleton(twitchConfig);
