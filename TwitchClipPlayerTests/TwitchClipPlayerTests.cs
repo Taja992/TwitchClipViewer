@@ -80,7 +80,7 @@ public class TwitchClipPlayerTests
     [Fact]
     public async Task FetchClips_ShouldReturnClips_WhenResponseIsSuccessful()
     {
-        //Arrange
+        // Arrange
         var tokenResponse = new TokenResponse { AccessToken = "test-access-token" };
         var tokenResponseMessage = new HttpResponseMessage(HttpStatusCode.OK)
         {
@@ -110,28 +110,30 @@ public class TwitchClipPlayerTests
             .ReturnsAsync(clipsResponseMessage);
         
         // Act
-        var clips = await _twitchService.FetchClips(DateTime.UtcNow.AddDays(-60), DateTime.UtcNow);
+        var clips = await _twitchService.FetchClips(DateTime.UtcNow.AddDays(-60), DateTime.UtcNow, "test-broadcaster-name");
         
         // Assert
         Assert.Single(clips);
         Assert.Equal("test-clip-id", clips[0].Id);
     }
-
+    
     [Fact]
     public void BuildClipsUrl_ShouldReturnCorrectUrl()
     {
         // Arrange
         var startDate = DateTime.UtcNow.AddDays(-60);
         var endDate = DateTime.UtcNow;
+        var broadcasterId = "test-broadcaster-id";
         
         // Act
-        var url = _twitchService.BuildClipsUrl(startDate, endDate);
+        var url = _twitchService.BuildClipsUrl(startDate, endDate, broadcasterId);
         
         // Assert
         Assert.Contains("broadcaster_id=test-broadcaster-id", url);
         Assert.Contains($"started_at={startDate:O}", url);
         Assert.Contains($"ended_at={endDate:O}", url);
     }
+
 
     [Fact]
     public void ProcessClips_ShouldReturnEmptyList_WhenNoClipsData()

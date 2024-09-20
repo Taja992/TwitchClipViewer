@@ -1,17 +1,22 @@
 ﻿let fieldData;
 let currentClipIndex = 0;
 let clips = [];
+let broadcasterName = ''; // Declare broadcasterName here
 
-window.addEventListener('onWidgetLoad', function (obj) {
-    console.log('Widget loaded');
+window.addEventListener('onWidgetLoad', async function (obj) { // Make this function async
     fieldData = obj.detail.fieldData;
-    console.log('Field data:', fieldData);
+
+    try {
+        const apiToken = obj.detail.channel.apiToken; // Assuming the API token is available here
+        broadcasterName = await getBroadcasterName(apiToken);
+    } catch (error) {
+        updateDebugMessages(`Error fetching broadcaster name: ${error.message}`);
+    }
     playClips();
 
     // Add event listeners for date changes
     document.querySelectorAll('input[type="date"]').forEach(input => {
         input.addEventListener('change', () => {
-            console.log('Date changed:', input.name, input.value);
             fieldData[input.name] = input.value;
             playClips();
 
@@ -27,29 +32,45 @@ window.addEventListener('onWidgetLoad', function (obj) {
             googleFontLink.href = `https://fonts.googleapis.com/css?family=${fieldData.fontName}:400,${fieldData.fontWeight}`;
         });
     });
+
     // Set initial visibility of debug messages based on the checkbox value
     const debugMessages = document.getElementById('debug-messages');
     debugMessages.style.display = fieldData.showDebugMessages ? 'block' : 'none';
 });
 
-async function fetchClips(startDate, endDate) {
+async function getBroadcasterName(apiToken) {
+    const response = await fetch("https://api.streamelements.com/kappa/v2/channels/me", {
+        headers: {
+            "accept": "application/json",
+            "authorization": `apikey ${apiToken}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error fetching broadcaster name: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.username;
+}
+
+async function fetchClips(startDate, endDate, broadcasterName) {
     try {
-        console.log('Fetching clips from', startDate, 'to', endDate);
+
         // Ensure dates are in ISO 8601 format
         const formattedStartDate = new Date(startDate).toISOString();
         const formattedEndDate = new Date(endDate).toISOString();
 
-        const response = await fetch(`https://twitchclipplayer-h3bcanc6bmdkawhz.northeurope-01.azurewebsites.net/clips?start_date=${formattedStartDate}&end_date=${formattedEndDate}`);
+        const response = await fetch(`https://twitchclipplayer-h3bcanc6bmdkawhz.northeurope-01.azurewebsites.net/clips?broadcaster_name=${broadcasterName}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`);
         if (!response.ok) {
             const errorText = await response.text();
             throw new Error(`Failed to fetch clips: ${response.statusText} - ${errorText}`);
         }
 
         const fetchedClips = await response.json();
-        console.log('Fetched clips:', fetchedClips);
         return fetchedClips;
     } catch (error) {
-        updateDebugMessages(`Error fetching clips: ${error.message}`);
+        updateDebugMessages(`Error fetching clips for broadcasterName ${broadcasterName}: ${error.message}`);
         return [];
     }
 }
@@ -67,7 +88,7 @@ async function playClips() {
             throw new Error('Invalid end date');
         }
 
-        clips = await fetchClips(startDate, endDate);
+        clips = await fetchClips(startDate, endDate, broadcasterName);
         const clipPlayer = document.getElementById('clip-player');
 
         if (!clipPlayer) {
@@ -81,16 +102,14 @@ async function playClips() {
         }
 
         currentClipIndex = 0; // Reset the clip index
-        // updateClipCounter(`Clips remaining: ${clips.length}`);
 
         function playNextClip() {
             if (currentClipIndex >= clips.length) {
                 currentClipIndex = 0;
                 // Fetch new clips with a random date range
                 const { randomStartDate, randomEndDate } = generateRandomDateRange();
-                fetchClips(randomStartDate, randomEndDate).then(newClips => {
+                fetchClips(randomStartDate, randomEndDate, broadcasterName).then(newClips => {
                     clips = newClips;
-                    // updateClipCounter(`Clips remaining: ${clips.length}`);
                     playNextClip();
                 });
                 return;
@@ -101,7 +120,6 @@ async function playClips() {
             clipPlayer.src = clip.thumbnail_url.replace('-preview-480x272.jpg', '.mp4');
             clipPlayer.play();
             currentClipIndex++;
-            // updateClipCounter(`Clips remaining: ${clips.length - currentClipIndex}`);
         }
 
         clipPlayer.removeEventListener('ended', playNextClip); // Remove any existing event listener
@@ -113,7 +131,7 @@ async function playClips() {
 }
 
 function generateRandomDateRange() {
-    const start = new Date(2022, 3, 11); // Start date
+    const start = new Date(2022, 3, 11); // Start date (e.g., January 1, 2020)
     const end = new Date(); // End date (current date)
     const randomStartDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     const randomEndDate = new Date(randomStartDate.getTime() + Math.random() * (end.getTime() - randomStartDate.getTime()));
@@ -124,7 +142,6 @@ function generateRandomDateRange() {
 }
 
 function updateDebugMessages(message) {
-    console.log(message);
     const debugMessages = document.getElementById('debug-messages');
     debugMessages.innerText = message;
     // Apply the text settings to the debug-messages div
@@ -135,9 +152,3 @@ function updateDebugMessages(message) {
     debugMessages.style.backgroundColor = fieldData.backgroundColor;
     debugMessages.style.display = fieldData.showDebugMessages ? 'block' : 'none';
 }
-
-// function updateClipCounter(message) {
-//     console.log(message);
-//     const clipCounter = document.getElementById('clip-counter');
-//     clipCounter.innerText = message;
-// }
